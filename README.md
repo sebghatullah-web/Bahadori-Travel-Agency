@@ -1,61 +1,61 @@
-# آژانس مسافرتی بهادری — سایت داینامیک با پنل مدیریت
+# Bahadori Travel Agency — Dynamic Website with Admin Panel
 
-سایت کامل و استاندارد یک آژانس مسافرتی بر پایهٔ **PHP + MySQL** با معماری **MVC**،
-کاملاً **ریسپانسیو (Responsive)** و **RTL (فارسی)**. تمام بخش‌ها و عناصر سایت
-(متن‌ها، تصاویر، رنگ‌ها، تورها، مقاصد، مقالات، خدمات و…) از طریق **پنل مدیریت**
-قابل کنترل هستند و هیچ‌چیز به‌صورت هاردکد در قالب‌ها ثابت نشده است.
+A complete, standard travel agency website built on **PHP + MySQL** with an **MVC** architecture,
+fully **Responsive** and **RTL (Persian/Farsi)**. Every part and element of the site
+(texts, images, colors, tours, destinations, articles, services, etc.) is controllable
+through the **Admin Panel**, and nothing is hard-coded into the templates.
 
 ---
 
-## ✨ قابلیت‌ها
+## ✨ Features
 
-- **سایت عمومی (Frontend)**
-  - صفحه اصلی داینامیک (هیرو، جستجو، مقصدهای ویژه، تورهای ویژه، خدمات، مقالات)
-  - فهرست و صفحه جزئیات مقاصد
-  - فهرست و صفحه جزئیات تورها + فرم رزرو
-  - وبلاگ/مقالات + صفحه جزئیات مقاله
-  - صفحه «درباره ما» و «تماس با ما» (فرم تماس واقعی)
-  - جستجوی زنده (AJAX) در هدر
-  - عضویت در خبرنامه (AJAX)
-- **پنل مدیریت (Admin)**
-  - ورود/خروج امن (رمز عبور هش‌شده با `password_hash`، محافظت CSRF)
-  - نمای کلی داشبورد با آمار
-  - مدیریت کامل: رزروها، مقاصد، تورها، مقالات، خدمات، پیام‌ها، خبرنامه، تنظیمات، کاربران
-  - آپلود تصویر با اعتبارسنجی (نوع و حجم)
-  - پاسخ‌های AJAX/JSON برای همهٔ عملیات CRUD
-- **استانداردها**
-  - معماری MVC (Model / View / Controller)
-  - فرانت‌کنترلر واحد (`public/index.php`) + روتر + `.htaccess`
-  - استفاده از Prepared Statements (امن در برابر SQL Injection)
-  - خروجی امن‌شده با `htmlspecialchars` در همهٔ ویوها
-  - فونت **B Nazanin** به‌عنوان فونت اصلی
-  - Bootstrap 5 (RTL) + CSS اختصاصی + JavaScript بدون وابستگی اضافی
+- **Public Site (Frontend)**
+  - Dynamic homepage (hero, search, featured destinations, featured tours, services, articles)
+  - Destinations list and detail pages
+  - Tours list and detail pages + booking form
+  - Blog / Articles + article detail page
+  - "About Us" and "Contact Us" pages (working contact form)
+  - Live search (AJAX) in the header
+  - Newsletter subscription (AJAX)
+- **Admin Panel**
+  - Secure login / logout (password hashed with `password_hash`, CSRF protection)
+  - Dashboard overview with statistics
+  - Full management of: bookings, destinations, tours, articles, services, messages, newsletter, settings, users
+  - Image upload with validation (file type and size)
+  - AJAX/JSON responses for all CRUD operations
+- **Standards**
+  - MVC architecture (Model / View / Controller)
+  - Single front controller (`public/index.php`) + Router + `.htaccess`
+  - Use of Prepared Statements (safe against SQL Injection)
+  - Output escaped with `htmlspecialchars` in all views
+  - **B Nazanin** font as the primary font
+  - Bootstrap 5 (RTL) + custom CSS + dependency-free JavaScript
   - HTML/CSS/JS + AJAX + PHP + MySQL + Node.js
 
 ---
 
-## 🚀 راه‌اندازی روی XAMPP (لوکال)
+## 🚀 Setup on XAMPP (Local)
 
-1. پوشهٔ پروژه را در `c:\xampp\htdocs\BahadoriTravelAgency` قرار دهید.
-2. از XAMPP Control Panel ماژول‌های **Apache** و **MySQL** را استارت بزنید.
-3. دیتابیس را بسازید و دادهٔ اولیه را وارد کنید:
+1. Place the project folder in `c:\xampp\htdocs\BahadoriTravelAgency`.
+2. From the XAMPP Control Panel, start the **Apache** and **MySQL** modules.
+3. Create the database and import the initial data:
 
    ```bat
    C:\xampp\mysql\bin\mysql.exe -u root -e "CREATE DATABASE IF NOT EXISTS bahadori_travel CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
    C:\xampp\mysql\bin\mysql.exe -u root --default-character-set=utf8mb4 bahadori_travel -e "source c:/xampp/htdocs/BahadoriTravelAgency/database/schema.sql"
    ```
 
-4. سایت را باز کنید: `http://localhost/BahadoriTravelAgency/public/`
-5. ورود به پنل مدیریت: `http://localhost/BahadoriTravelAgency/public/admin/login`
-   - **ایمیل:** `admin@bahadori.travel`
-   - **گذرواژه:** `admin1234`
-   - (پس از اولین ورود، گذرواژه را از بخش «کاربران» تغییر دهید.)
+4. Open the site: `http://localhost/BahadoriTravelAgency/public/`
+5. Admin panel login: `http://localhost/BahadoriTravelAgency/public/admin/login`
+   - **Email:** `admin@bahadori.travel`
+   - **Password:** `admin1234`
+   - (After your first login, change the password from the "Users" section.)
 
 ---
 
-## ⚙️ تنظیمات اتصال به دیتابیس
+## ⚙️ Database Connection Settings
 
-فایل `config/config.php`:
+The `config/config.php` file:
 
 ```php
 'db' => [
@@ -68,33 +68,33 @@
 ],
 ```
 
-هنگام انتقال به هاست واقعی، فقط مقادیر بالا (و در صورت نیاز `app.base_url`) را ویرایش کنید.
+When moving to a real host, only edit the values above (and `app.base_url` if needed).
 
 ---
 
-## 🌐 هاست کردن (انتقال به سرور واقعی)
+## 🌐 Hosting (Deploying to a Real Server)
 
-این پروژه طوری نوشته شده که بدون تغییر کد روی هاست‌های معمولی کار کند:
+This project is written to work on regular hosting without any code changes:
 
-1. کل پوشهٔ پروژه را روی هاست آپلود کنید.
-2. دیتابیس را از phpMyAdmin بسازید (utf8mb4) و فایل `database/schema.sql` را ایمپورت کنید.
-3. اطلاعات دیتابیس جدید را در `config/config.php` وارد کنید.
-4. **Document Root** هاست را روی پوشهٔ `public/` تنظیم کنید.
-   - اگر هاست اجازهٔ تغییر Document Root نداد، فایل `.htaccess` ریشه به‌طور خودکار
-     درخواست‌ها را به `public/index.php` هدایت می‌کند.
-5. فونت B Nazanin (توصیه‌شده): فایل‌های `BNazanin.woff2/.woff/.ttf` و
-   `BNazanin-Bold.*` را در `public/assets/fonts/` بگذارید. راهنما: `public/assets/fonts/README.md`.
+1. Upload the entire project folder to the host.
+2. Create the database in phpMyAdmin (utf8mb4) and import the `database/schema.sql` file.
+3. Enter the new database credentials in `config/config.php`.
+4. Set the host's **Document Root** to the `public/` folder.
+   - If the host doesn't allow changing the Document Root, the root `.htaccess` file
+     automatically redirects requests to `public/index.php`.
+5. B Nazanin font (recommended): place the `BNazanin.woff2/.woff/.ttf` and
+   `BNazanin-Bold.*` files in `public/assets/fonts/`. Guide: `public/assets/fonts/README.md`.
 
-> نکته: آدرس‌ها به‌صورت خودکار ساخته می‌شوند (auto-detect base URL) و با
-> `/index.php/...` نیز کار می‌کنند؛ بنابراین اگر روی بعضی هاست‌ها `mod_rewrite`
-> فعال نباشد هم سایت بدون مشکل اجرا می‌شود.
+> Note: URLs are generated automatically (auto-detect base URL) and also work with
+> `/index.php/...`; so even if `mod_rewrite` isn't enabled on some hosts, the site
+> runs without any issues.
 
 ---
 
-## 🔔 سرور اطلاع‌رسانی لحظه‌ای (Node.js — اختیاری)
+## 🔔 Real-time Notification Server (Node.js — Optional)
 
-پنل مدیریت از طریق Node.js + Socket.IO رویدادها (رزرو جدید، پیام جدید و…) را
-به‌صورت زنده نشان می‌دهد. برای فعال‌سازی:
+The admin panel uses Node.js + Socket.IO to display events (new booking, new message, etc.)
+in real time. To enable it:
 
 ```bat
 cd node-server
@@ -102,68 +102,65 @@ npm install
 npm start
 ```
 
-آدرس و کلید مخفی در `config/config.php` → بخش `node` قابل تغییر است.
-اگر این سرور را اجرا نکنید، سایت و پنل کاملاً کار می‌کنند و فقط بخش
-اطلاع‌رسانی لحظه‌ای غیرفعال می‌ماند.
+The address and secret key can be changed in `config/config.php` → the `node` section.
+If you don't run this server, the site and admin panel work fully and only the
+real-time notification feature stays disabled.
 
 ---
 
-## 🗂 ساختار پروژه (MVC)
+## 🗂 Project Structure (MVC)
 
 ```
 BahadoriTravelAgency/
 ├── app/
-│   ├── Core/            # هستهٔ فریم‌ورک (Router, Request, Database, View, Session, Upload, ...)
-│   ├── Controllers/     # کنترلرهای سایت عمومی
-│   │   └── Admin/       # کنترلرهای پنل مدیریت
-│   ├── Models/          # مدل‌ها (Tour, Destination, Article, Setting, ...)
-│   ├── Views/           # ویوها
-│   │   ├── frontend/    # صفحات سایت عمومی
-│   │   ├── admin/       # صفحات پنل مدیریت
-│   │   └── layouts/     # قالب‌های مشترک (frontend.php, admin.php)
-│   └── helpers.php      # توابع کمکی (e, asset, base_url, format_price, fa_number, ...)
+│   ├── Core/            # Framework core (Router, Request, Database, View, Session, Upload, ...)
+│   ├── Controllers/     # Public site controllers
+│   │   └── Admin/       # Admin panel controllers
+│   ├── Models/          # Models (Tour, Destination, Article, Setting, ...)
+│   ├── Views/           # Views
+│   │   ├── frontend/    # Public site pages
+│   │   ├── admin/       # Admin panel pages
+│   │   └── layouts/     # Shared layouts (frontend.php, admin.php)
+│   └── helpers.php      # Helper functions (e, asset, base_url, format_price, fa_number, ...)
 ├── config/
-│   ├── config.php       # تنظیمات برنامه و دیتابیس
-│   └── routes.php       # تعریف مسیرها (روت‌ها)
+│   ├── config.php       # Application and database settings
+│   └── routes.php       # Route definitions
 ├── database/
-│   └── schema.sql       # ساختار جداول + دادهٔ اولیه
-├── node-server/         # سرور اطلاع‌رسانی لحظه‌ای (Express + Socket.IO)
-├── public/              # ریشهٔ وب (تنها پوشهٔ قابل دسترسی از وب)
-│   ├── index.php        # فرانت‌کنترلر
-│   ├── .htaccess        # بازنویسی URL
+│   └── schema.sql       # Table structure + initial data
+├── node-server/         # Real-time notification server (Express + Socket.IO)
+├── public/              # Web root (the only publicly accessible folder)
+│   ├── index.php        # Front controller
+│   ├── .htaccess        # URL rewriting
 │   └── assets/          # css / js / images / fonts / uploads
-├── .htaccess            # هدایت ریشه به public
-└── storage/             # لاگ‌ها و فایل‌های موقت
+├── .htaccess            # Redirects root to public
+└── storage/             # Logs and temporary files
 ```
 
 ---
 
-## 🎨 مدیریت ظاهر از پنل
+## 🎨 Managing Appearance from the Panel
 
-از بخش **تنظیمات** پنل مدیریت می‌توانید موارد زیر را بدون دست‌زدن به کد تغییر دهید:
+From the **Settings** section of the admin panel, you can change the following without touching any code:
 
-- نام و شعار سایت، اطلاعات تماس، شبکه‌های اجتماعی
-- متن‌های بخش هیرو (عنوان، زیرنویس، دکمه‌ها، تصویر پس‌زمینه)
-- رنگ اصلی، رنگ تیره و رنگ روشن سایت
-- محتوای صفحهٔ «درباره ما»
-- متن‌های فوتر
-
----
-
-## 🔐 امنیت
-
-- رمز عبور با `password_hash()` / `password_verify()` نگهداری می‌شود.
-- همهٔ فرم‌ها دارای توکن **CSRF** هستند.
-- تمام کوئری‌ها با **Prepared Statements** اجرا می‌شوند.
-- خروجی همهٔ داده‌های کاربر با `htmlspecialchars` ایمن‌سازی می‌شود.
-- دسترسی مستقیم به پوشه‌های `app/`, `config/`, `database/` مسدود است.
+- Site name and tagline, contact info, social networks
+- Hero section texts (title, subtitle, buttons, background image)
+- Primary color, dark color, and light color of the site
+- "About Us" page content
+- Footer texts
 
 ---
 
-## 🐞 اشکال‌زدایی (Debug)
+## 🔐 Security
 
-برای دیدن پیام دقیق خطاها، در `config/config.php` مقدار `app.debug` را روی
-`true` بگذارید (در محیط production روی `false` قرار دهید تا جزئیات خطا نمایش داده نشود).
+- Passwords are stored using `password_hash()` / `password_verify()`.
+- All forms include a **CSRF** token.
+- All queries are executed with **Prepared Statements**.
+- All user data output is escaped with `htmlspecialchars`.
+- Direct access to the `app/`, `config/`, and `database/` folders is blocked.
 
-#   B a h a d o r i - T r a v e l - A g e n c y  
- 
+---
+
+## 🐞 Debugging
+
+To see detailed error messages, set `app.debug` to `true` in `config/config.php`
+(in production, keep it `false` so error details are not displayed).
