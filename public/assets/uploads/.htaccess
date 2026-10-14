@@ -1,0 +1,23 @@
+# =========================================================================
+#  Security for the uploads folder.
+#  Images are served, but PHP execution is disabled so a malicious upload
+#  can never run as code. Safe for shared hosting.
+# =========================================================================
+
+# Disable PHP / CGI execution in this directory.
+<IfModule mod_php.c>
+    php_admin_flag engine off
+</IfModule>
+RemoveHandler .php .phtml .php3 .php4 .php5 .php7 .php8 .phar
+RemoveType .php .phtml .php3 .php4 .php5 .php7 .php8 .phar
+php_flag engine off
+
+# Apache 2.4 style (fallback)
+<IfModule mod_authz_core.c>
+    <FilesMatch "\.(?i:ph(ar|p|tml?)|cgi|pl)$">
+        Require all denied
+    </FilesMatch>
+</IfModule>
+
+# Never list the uploads directory.
+Options -Indexes

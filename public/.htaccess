@@ -1,0 +1,34 @@
+# =========================================================================
+#  URL rewriting for the Bahadori Travel Agency front controller.
+#  Sends every non-file request to public/index.php so the MVC router
+#  can handle it. Works on Apache (XAMPP + most shared hosts).
+# =========================================================================
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Serve existing files/directories directly.
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Everything else -> index.php (no RewriteBase, so it works in both
+    # sub-folders and at the document root on any standard host).
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# ---- Security: never expose sensitive files ----------------------------
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# Deny access to composer/env style files if present.
+<FilesMatch "\.(sql|md|log|ini|yml|yaml)$">
+    Require all denied
+</FilesMatch>
+
+# ---- Default character set ---------------------------------------------
+AddDefaultCharset UTF-8
+
+# ---- Directory listing off ---------------------------------------------
+Options -Indexes
